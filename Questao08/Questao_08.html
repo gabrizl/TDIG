@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Questão 08</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Questoes.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      Lista de números:
+      <div>
+        <input type="text" id="txtNumeros" class="input" />
+        <input
+          type="button"
+          value="Fazer calculo fatorial"
+          onclick="fat()"
+          class="button"
+        />
+      </div>
+      <div id="cent">Preencha o campo acima com números inteiros</div>
+    </div>
+
+    <script>
+      var cent = document.getElementById("cent");
+
+      function calcularFatorialRecursivamente(n) {
+        if (n === 1) {
+          return 1;
+        }
+        return n * calcularFatorialRecursivamente(n - 1);
+      }
+
+      function calcularFatorial(fatorial) {
+        if (isNaN(fatorial)) {
+          return "Não existe fatorial de um texto";
+        }
+
+        if (!Number.isInteger(fatorial) || fatorial < 0) {
+          return "Não existe fatorial de um número não natural";
+        }
+
+        if (fatorial === 0 || fatorial === 1) {
+          return 1;
+        }
+
+        return calcularFatorialRecursivamente(fatorial);
+      }
+
+      function fat() {
+        let numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+
+        cent.innerHTML = "";
+
+        for (let i = 0; i < numeros.length; i++) {
+          numeros[i] = parseFloat(numeros[i]);
+        }
+
+        for (i = 0; i < numeros.length; i++) {
+          fatorial = calcularFatorial(numeros[i]);
+          if (Number.isInteger(fatorial)) {
+            cent.innerHTML +=
+              "O fatorial de " + numeros[i] + " é " + fatorial + "<br>";
+          } else {
+            cent.innerHTML += fatorial + "<br>";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

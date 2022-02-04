@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Questão 06</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Questoes.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      Lista de números:
+      <div>
+        <input type="text" id="txtNumeros" class="input" />
+
+        <input
+          type="button"
+          value="Ordenar Lista"
+          onclick="ordenarInteiros()"
+          class="button"
+        />
+      </div>
+      <div id="cent">Preencha o campo acima com números inteiros</div>
+    </div>
+  </body>
+
+  <script>
+    var cent = document.getElementById("cent");
+
+    function consertarSort(a, b) {
+      return a - b;
+    }
+
+    function ordenarInteiros() {
+      let numeros = document.getElementById("txtNumeros").value;
+      let cont = 0;
+      numeros = numeros.split(",");
+      cent.innerHTML = "";
+
+      for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = parseFloat(numeros[i]);
+      }
+
+      numeros.sort(consertarSort);
+
+      for (let i = 0; i < numeros.length; i++) {
+        if (Number.isInteger(numeros[i]) == false) {
+          cont++;
+        }
+      }
+
+      if (cont == 0) {
+        cent.innerHTML += "Números ordenados: ";
+        for (let i = 0; i < numeros.length; i++) {
+          if (i == numeros.length - 1) {
+            cent.innerHTML += numeros[i];
+          } else {
+            cent.innerHTML += numeros[i] + ", ";
+          }
+        }
+      } else {
+        cent.innerHTML =
+          "Nem todos os números são inteiros. Por favor tente novamente!";
+      }
+    }
+  </script>
+</html>

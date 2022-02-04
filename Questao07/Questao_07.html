@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Questão 07</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Questoes.css">
+</head>
+
+<body>
+    <div class="container">
+    Lista de números: 
+    <div>
+        <input type="text" id="txtNumeros" class="input">
+        <input type="button" value="Somar Números" onclick="somaDeImpares()" class="button">
+        </div>
+        <div id = "cent">
+            Preencha o campo acima com números inteiros
+        </div>
+    </div>
+    
+</body>
+
+    <script>
+         var cent = document.getElementById('cent');
+
+        function somaDeImpares(){
+            let numeros =  document.getElementById("txtNumeros").value;
+            let cont = 0
+            let verifica = 0
+            numeros = numeros.split(",")
+            cent.innerHTML = ''
+
+            for(let i=0; i<numeros.length; i++){
+                numeros[i] = parseFloat(numeros[i])
+            }
+
+            const impar = numero => numero%2 != 0
+            const divByTres = numero => numero%3 == 0
+            const inteiro = numero => Number.isInteger(numero) == true
+            
+            cont = numeros.filter(impar).filter(divByTres).filter(inteiro).reduce(function(acrescenta, e){
+                return acrescenta + e 
+            })
+
+            for (let i = 0; i < numeros.length; i++){
+                if((Number.isNaN(numeros[i])) == true){
+                    verifica++
+                }
+            }
+
+            if(verifica==0){ 
+               cent.innerHTML += 'Resultado da soma: ' + cont
+            }else{
+                cent.innerHTML += "Nem todos os elementos são números. Por favor tente novamente!"
+            }
+
+        }
+
+    </script>
+</html>

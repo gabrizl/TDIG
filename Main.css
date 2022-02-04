@@ -1,0 +1,42 @@
+body{
+    background-color: #222;
+}
+
+.title{
+    text-align: center;
+    color: #eee;
+}
+
+.container{
+    
+    max-width: 250px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 50px;
+    border: 2px solid chartreuse ; 
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.main-screen-container{
+    display: grid;
+    justify-content: center;
+    margin: 10px 10px;
+}
+
+.main-screen-container a {
+    background-color: #444;
+    margin: 8px 0;
+    padding: 15px 20px;
+    display: flex; 
+    border-radius: 5px;
+    justify-content: space-between;
+    color: #eee;
+    align-items: center;
+}
+
+.main-screen-container a:hover {
+    background-color: #444;
+    color: chartreuse; 
+}
